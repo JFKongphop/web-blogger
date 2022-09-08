@@ -30,7 +30,10 @@ const upload = multer({
 
 // go to home page
 router.get('/', (req, res)=>{
-    res.render('index')
+
+    Blogger.find().exec((err, doc)=>{
+        res.render('index', {product : doc})
+    })
 })
 
 // go to admin page
